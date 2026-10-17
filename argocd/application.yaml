@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontend-demo
+  # Application 资源本身要放在 argocd 命名空间
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # TODO: 替换成你自己的 GitHub 仓库地址
+    repoURL: https://github.com/cayden/argocd-frontend-demo.git
+    targetRevision: HEAD
+    # 仓库里 K8s 清单所在的目录（deployment.yaml / service.yaml）
+    path: k8s
+  destination:
+    # 部署到当前集群的 default 命名空间
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    # 开启自动同步：Git 仓库一变，ArgoCD 自动把集群状态拉到与 Git 一致
+    automated:
+      prune: true      # Git 里删了资源，集群里也删
+      selfHeal: true   # 有人手动改了集群资源，自动恢复成 Git 的版本
+    syncOptions:
+      - CreateNamespace=true
