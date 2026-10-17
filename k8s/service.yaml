@@ -4,12 +4,13 @@ metadata:
   name: frontend-demo
   namespace: default
 spec:
-  type: NodePort
+  # 节点端口 30080 已让给 crud-gitops 的 crud-frontend
+  # 本 demo 改为 ClusterIP，需要访问时用：
+  #   kubectl port-forward svc/frontend-demo -n default 8081:80
+  type: ClusterIP
   selector:
     app: frontend-demo
   ports:
     - name: http
       port: 80
       targetPort: 80
-      # 集群内任意节点 IP 的 30080 端口即可访问
-      nodePort: 30080
