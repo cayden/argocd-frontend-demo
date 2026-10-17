@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-demo
+  namespace: default
+  labels:
+    app: frontend-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend-demo
+  template:
+    metadata:
+      labels:
+        app: frontend-demo
+    spec:
+      containers:
+        - name: nginx
+          # 本地构建的镜像，会用 `kind load docker-image` 导入到 kind 节点
+          image: frontend-demo:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 200m
+              memory: 64Mi
