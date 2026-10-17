@@ -1,0 +1,8 @@
+# 工具二进制
+bin/
+# ArgoCD 官方安装清单（非项目核心，可从官方重新获取）
+argocd-install.yaml
+# kind 集群配置本地用
+kind-config.yaml
+# 本地状态/缓存
+.workbuddy/
