@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArgoCD GitOps Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+    }
+    .card {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 48px 56px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    .badge {
+      display: inline-block;
+      background: #00d2a0;
+      color: #063b30;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    h1 { font-size: 36px; margin-bottom: 12px; }
+    p { font-size: 16px; opacity: 0.9; line-height: 1.6; }
+    .version {
+      margin-top: 24px;
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: 14px;
+      background: rgba(0,0,0,0.25);
+      padding: 8px 16px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <span class="badge">DEPLOYED BY ARGOCD</span>
+    <h1>Hello, GitOps!</h1>
+    <p>这个前端页面由 ArgoCD 从 Git 仓库自动同步部署到 Kubernetes。</p>
+    <div class="version">v1.0.0</div>
+  </div>
+</body>
+</html>
